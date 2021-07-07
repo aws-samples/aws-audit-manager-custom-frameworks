@@ -1,0 +1,79 @@
+A.1 - s3 Compliance:
+  A.1.1 - s3-bucket-level-public-access-prohibited:
+    name: A.1.1 - s3-bucket-level-public-access-prohibited
+    description: Checks if Amazon Simple Storage Service (Amazon S3) buckets are publicly accessible. This rule is NON_COMPLIANT if an Amazon S3 bucket is not listed in the excludedPublicBuckets parameter and bucket level settings are public.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: S3 bucket level public access prohibited
+      troubleshootingText: Checks if Amazon Simple Storage Service (Amazon S3) buckets are publicly accessible.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: S3_BUCKET_LEVEL_PUBLIC_ACCESS_PROHIBITED
+  A.1.2 - s3-bucket-logging-enabled:
+    name: A.1.2 - s3-bucket-logging-enabled
+    description: Checks whether logging is enabled for your S3 buckets.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: s3 bucket logging enabled
+      troubleshootingText: Checks whether logging is enabled for your S3 buckets.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: S3_BUCKET_LOGGING_ENABLED
+  A.1.3 - s3-bucket-public-read-prohibited:
+    name: A.1.3 - s3-bucket-public-read-prohibited
+    description: Checks if your Amazon S3 buckets do not allow public read access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: S3 bucket level public  read access prohibited
+      troubleshootingText: Checks if your Amazon S3 buckets do not allow public read access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: S3_BUCKET_PUBLIC_READ_PROHIBITED
+  A.1.4 - s3-bucket-public-write-prohibited:
+    name: A.1.4 - s3-bucket-public-write-prohibited
+    description: Checks if your Amazon S3 buckets do not allow public write access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: S3 bucket level public write access prohibited
+      troubleshootingText: Checks if your Amazon S3 buckets do not allow public write access. The rule checks the Block Public Access settings, the bucket policy, and the bucket access control list (ACL).
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: S3_BUCKET_PUBLIC_WRITE_PROHIBITED
+  A.1.5 - s3-bucket-replication-enabled:
+    name: A.1.5 - s3-bucket-replication-enabled
+    description: Checks whether the Amazon S3 buckets have cross-region replication enabled.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: s3 bucket replication enabled
+      troubleshootingText: Checks whether the Amazon S3 buckets have cross-region replication enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: S3_BUCKET_REPLICATION_ENABLED
+  A.1.6 - s3-bucket-server-side-encryption-enabled:
+    name: A.1.6 - s3-bucket-server-side-encryption-enabled
+    description: Checks that your Amazon S3 bucket either has Amazon S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server side encryption that uses AES-256 or AWS Key Management Service.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: s3 bucket server side encryption enabled
+      troubleshootingText: Checks that your Amazon S3 bucket either has Amazon S3 default encryption enabled or that the S3 bucket policy explicitly denies put-object requests without server side encryption that uses AES-256 or AWS Key Management Service.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: S3_BUCKET_SERVER_SIDE_ENCRYPTION_ENABLED

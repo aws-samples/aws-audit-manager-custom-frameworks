@@ -1,0 +1,421 @@
+---
+A.6 - Organisation of information security:
+  A.6.1.2 - Segregation of duties:
+    name: A.6.1.2 - Segregation of duties
+    description: A.6.1.2 - Conflicting duties and areas of responsibility shall be
+      segregated to reduce opportunities for unauthorized or unintentional modification
+      or misuse of the organization's assets.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: Data source 1
+      troubleshootingText: Checks whether at least one AWS CloudTrail trail is logging
+        Amazon S3 data events for all S3 buckets. The rule is NON_COMPLIANT if trails
+        that log data events for S3 buckets are not configured.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: cloudtrail-s3-dataevents-enabled
+    - sourceName: Data source 2
+      troubleshootingText: Checks whether AWS CloudTrail is enabled in your AWS account.
+        Optionally, you can specify which S3 bucket, SNS topic, and Amazon CloudWatch
+        Logs ARN to use.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: cloudtrail-enabled
+    - sourceName: Data source 3
+      troubleshootingText: Checks whether IAM groups have at least one IAM user.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: iam-group-has-users-check
+    - sourceName: Data source 4
+      troubleshootingText: Checks whether the Application Load Balancer and the Classic
+        Load Balancer have logging enabled. The rule is NON_COMPLIANT if the access_logs.s3.enabled
+        is false or access_logs.S3.bucket is not equal to the s3BucketName that you
+        provided.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: elb-logging-enabled
+    - sourceName: Data source 5
+      troubleshootingText: Checks whether logging is enabled for your S3 buckets.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-bucket-logging-enabled
+    - sourceName: Data source 6
+      troubleshootingText: Check whether the Amazon Relational Database Service instances
+        are not publicly accessible. The rule is NON_COMPLIANT if the publiclyAccessible
+        field is true in the instance configuration item.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: rds-instance-public-access-check
+    - sourceName: Data source 7
+      troubleshootingText: Checks if Amazon Relational Database Service (Amazon RDS)
+        snapshots are public. The rule is NON_COMPLIANT if any existing and new Amazon
+        RDS snapshots are public.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: rds-snapshots-public-prohibited
+    - sourceName: Data source 8
+      troubleshootingText: Checks whether Amazon Redshift clusters are not publicly
+        accessible. The rule is NON_COMPLIANT if the publiclyAccessible field is true
+        in the cluster configuration item.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: redshift-cluster-public-access-check
+    - sourceName: Data source 9
+      troubleshootingText: CloudTrail is a service which logs API calls made to the
+        AWS platform. This provides information on what API call was made, who made
+        the API call and when the call was made, as well as other information such
+        as the IP address.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: multi-region-cloudtrail-enabled
+    - sourceName: Data source 10
+      troubleshootingText: " Checks whether the root user access key is available.
+        The rule is COMPLIANT if the user access key does not exist."
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: iam-root-access-key-check
+    - sourceName: Data source 11
+      troubleshootingText: Checks that AWS Security Hub is enabled for an AWS account.
+        The rule is NON_COMPLIANT if Security Hub is not enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: securityhub-enabled
+    - sourceName: Data source 12
+      troubleshootingText: Checks whether IAM users are members of at least one IAM
+        group.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: iam-user-group-membership-check
+    - sourceName: Data source 13
+      troubleshootingText: Checks that none of your IAM users have policies attached.
+        IAM users must inherit permissions from IAM groups or roles.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: iam-user-no-policies-check
+    - sourceName: Data source 14
+      troubleshootingText: Checks whether AWS Database Migration Service replication
+        instances are public. The rule is NON_COMPLIANT if PubliclyAccessible field
+        is true.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: dms-replication-not-public
+    - sourceName: Data source 15
+      troubleshootingText: Checks whether Amazon GuardDuty is enabled in your AWS
+        account and region. If you provide an AWS account for centralization, the
+        rule evaluates the Amazon GuardDuty results in the centralized account. The
+        rule is COMPLIANT when Amazon GuardDuty is enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: guardduty-enabled-centralized
+    - sourceName: Data source 16
+      troubleshootingText: 'Checks the IAM policies that you create for Allow statements
+        that grant permissions to all actions on all resources. The rule is NON_COMPLIANT
+        if any policy statement includes ''Effect'': ''Allow'' with ''Action'': ''*''
+        over ''Resource'': ''*''.'
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: iam-policy-no-statements-with-admin-access
+    - sourceName: Data source 17
+      troubleshootingText: Checks whether Amazon Virtual Private Cloud flow logs are
+        found and enabled for Amazon VPC.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: vpc-flow-logs-enabled
+    - sourceName: Data source 18
+      troubleshootingText: Checks whether the project contains environment variables
+        AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. The rule is NON_COMPLIANT when
+        the project environment variables contains plaintext credentials.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: codebuild-project-envvar-awscred-check
+    - sourceName: Data source 19
+      troubleshootingText: Checks whether the AWS Lambda function policy attached
+        to the Lambda resource prohibits public access. If the Lambda function policy
+        allows public access it is NON_COMPLIANT.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: lambda-functions-public-access-prohibited
+    - sourceName: Data source 20
+      troubleshootingText: Checks whether the required public access block settings
+        are configured from account level. The rule is only NON_COMPLIANT when the
+        fields set below do not match the corresponding fields in the configuration
+        item.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-account-level-public-access-blocks
+    - sourceName: Data source 21
+      troubleshootingText: Checks whether Amazon Elastic Block Store snapshots are
+        not publicly restorable. The rule is NON_COMPLIANT if one or more snapshots
+        with the RestorableByUserIds field is set to all. If this field is set to
+        all, then Amazon EBS snapshots are public.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: ebs-snapshot-public-restorable-check
+    - sourceName: Data source 22
+      troubleshootingText: Checks whether direct internet access is disabled for an
+        Amazon SageMaker notebook instance. The rule is NON_COMPLIANT if SageMaker
+        notebook instances are internet-enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: sagemaker-notebook-no-direct-internet-access
+    - sourceName: Data source 23
+      troubleshootingText: Checks that your Amazon S3 buckets do not allow public
+        read access. The rule checks the Block Public Access settings, the bucket
+        policy, and the bucket access control list (ACL).
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-bucket-public-read-prohibited
+    - sourceName: Data source 24
+      troubleshootingText: Checks that your Amazon S3 buckets do not allow public
+        write access. The rule checks the Block Public Access settings, the bucket
+        policy, and the bucket access control list (ACL).
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-bucket-public-write-prohibited
+  A.6.1.4 - Contact with special interest groups:
+    name: A.6.1.4 - Contact with special interest groups
+    description: A.6.1.4 - Appropriate contacts with special interest groups or other
+      specialist security forums and professional associations shall be maintained.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: Data source 1
+      troubleshootingText: Checks that AWS Security Hub is enabled for an AWS account.
+        The rule is NON_COMPLIANT if Security Hub is not enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: securityhub-enabled
+    - sourceName: Data source 2
+      troubleshootingText: Checks whether Amazon GuardDuty is enabled in your AWS
+        account and region. If you provide an AWS account for centralization, the
+        rule evaluates the Amazon GuardDuty results in the centralized account. The
+        rule is COMPLIANT when Amazon GuardDuty is enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: guardduty-enabled-centralized
+  A.6.2.2 - Teleworking:
+    name: A.6.2.2 - Teleworking
+    description: A.6.2.2 - A policy and supporting security measures shall be implemented
+      to protect information accessed, processed or stored at teleworking sites.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: Data source 1
+      troubleshootingText: Checks whether Amazon Elasticsearch Service (Amazon ES)
+        domains are in Amazon Virtual Private Cloud (Amazon VPC). The rule is NON_COMPLIANT
+        if the Amazon ES domain endpoint is public.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: elasticsearch-in-vpc-only
+    - sourceName: Data source 2
+      troubleshootingText: Checks whether Amazon Elastic MapReduce (EMR) clusters'
+        master nodes have public IPs. The rule is NON_COMPLIANT if the master node
+        has a public IP.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: emr-master-no-public-ip
+    - sourceName: Data source 3
+      troubleshootingText: Checks whether the AWS Identity and Access Management users
+        have multi-factor authentication (MFA) enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: iam-user-mfa-enabled
+    - sourceName: Data source 4
+      troubleshootingText: Checks whether Amazon Elastic Compute Cloud (Amazon EC2)
+        instances have a public IP association. The rule is NON_COMPLIANT if the publicIp
+        field is present in the Amazon EC2 instance configuration item. This rule
+        applies only to IPv4.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: ec2-instance-no-public-ip
+    - sourceName: Data source 5
+      troubleshootingText: Checks whether Amazon Elastic Block Store snapshots are
+        not publicly restorable. The rule is NON_COMPLIANT if one or more snapshots
+        with the RestorableByUserIds field is set to all. If this field is set to
+        all, then Amazon EBS snapshots are public.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: ebs-snapshot-public-restorable-check
+A.7 - Human resource security:
+  A.7.1.1 - Screening:
+    name: A.7.1.1 - Screening
+    description: A.7.1.1 - Background verification checks on all candidates for employment
+      shall be carried out in accordance with relevant laws, regulations and ethics
+      and shall be proportional to the business requirements, the classification of
+      the information to be accessed and the perceived risks.
+    testingInformation: "-"
+    actionPlanTitle: "-"
+    actionPlanInstructions: "-"
+    controlMappingSources:
+    - sourceName: Data source 1
+      troubleshootingText: 'Checks whether at least one AWS CloudTrail trail is logging
+        Amazon S3 data events for all S3 buckets. The rule is NON_COMPLIANT if trails
+        that log data events for S3 buckets are not configured. '
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: cloudtrail-s3-dataevents-enabled
+    - sourceName: Data source 2
+      troubleshootingText: Checks whether AWS CloudTrail is enabled in your AWS account.
+        Optionally, you can specify which S3 bucket, SNS topic, and Amazon CloudWatch
+        Logs ARN to use.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: cloudtrail-enabled
+    - sourceName: Data source 3
+      troubleshootingText: Checks whether the Application Load Balancer and the Classic
+        Load Balancer have logging enabled. The rule is NON_COMPLIANT if the access_logs.s3.enabled
+        is false or access_logs.S3.bucket is not equal to the s3BucketName that you
+        provided.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: elb-logging-enabled
+    - sourceName: Data source 4
+      troubleshootingText: Checks whether logging is enabled for your S3 buckets.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-bucket-logging-enabled
+    - sourceName: Data source 5
+      troubleshootingText: Check whether the Amazon Relational Database Service instances
+        are not publicly accessible. The rule is NON_COMPLIANT if the publiclyAccessible
+        field is true in the instance configuration item.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: rds-instance-public-access-check
+    - sourceName: Data source 6
+      troubleshootingText: Checks if Amazon Relational Database Service (Amazon RDS)
+        snapshots are public. The rule is NON_COMPLIANT if any existing and new Amazon
+        RDS snapshots are public.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: rds-snapshots-public-prohibited
+    - sourceName: Data source 7
+      troubleshootingText: Checks whether Amazon Redshift clusters are not publicly
+        accessible. The rule is NON_COMPLIANT if the publiclyAccessible field is true
+        in the cluster configuration item.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: redshift-cluster-public-access-check
+    - sourceName: Data source 8
+      troubleshootingText: 'CloudTrail is a service which logs API calls made to the
+        AWS platform. This provides information on what API call was made, who made
+        the API call and when the call was made, as well as other information such
+        as the IP address. '
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: multi-region-cloudtrail-enabled
+    - sourceName: Data source 9
+      troubleshootingText: Checks that AWS Security Hub is enabled for an AWS account.
+        The rule is NON_COMPLIANT if Security Hub is not enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: securityhub-enabled
+    - sourceName: Data source 10
+      troubleshootingText: Checks whether AWS Database Migration Service replication
+        instances are public. The rule is NON_COMPLIANT if PubliclyAccessible field
+        is true.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: dms-replication-not-public
+    - sourceName: Data source 11
+      troubleshootingText: Checks whether Amazon GuardDuty is enabled in your AWS
+        account and region. If you provide an AWS account for centralization, the
+        rule evaluates the Amazon GuardDuty results in the centralized account. The
+        rule is COMPLIANT when Amazon GuardDuty is enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: guardduty-enabled-centralized
+    - sourceName: Data source 12
+      troubleshootingText: Checks whether the project contains environment variables
+        AWS_ACCESS_KEY_ID and AWS_SECRET_ACCESS_KEY. The rule is NON_COMPLIANT when
+        the project environment variables contains plaintext credentials.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: codebuild-project-envvar-awscred-check
+    - sourceName: Data source 13
+      troubleshootingText: Checks whether the AWS Lambda function policy attached
+        to the Lambda resource prohibits public access. If the Lambda function policy
+        allows public access it is NON_COMPLIANT.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: lambda-functions-public-access-prohibited
+    - sourceName: Data source 14
+      troubleshootingText: Checks whether Amazon Elastic Block Store snapshots are
+        not publicly restorable. The rule is NON_COMPLIANT if one or more snapshots
+        with the RestorableByUserIds field is set to all. If this field is set to
+        all, then Amazon EBS snapshots are public.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: ebs-snapshot-public-restorable-check
+    - sourceName: Data source 15
+      troubleshootingText: Checks whether direct internet access is disabled for an
+        Amazon SageMaker notebook instance. The rule is NON_COMPLIANT if SageMaker
+        notebook instances are internet-enabled.
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: sagemaker-notebook-no-direct-internet-access
+    - sourceName: Data source 16
+      troubleshootingText: Checks that your Amazon S3 buckets do not allow public
+        read access. The rule checks the Block Public Access settings, the bucket
+        policy, and the bucket access control list (ACL).
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-bucket-public-read-prohibited
+    - sourceName: Data source 17
+      troubleshootingText: Checks that your Amazon S3 buckets do not allow public
+        write access. The rule checks the Block Public Access settings, the bucket
+        policy, and the bucket access control list (ACL).
+      sourceSetUpOption: System_Controls_Mapping
+      sourceType: AWS_Config
+      sourceKeyword:
+        keywordValue: s3-bucket-public-write-prohibited

@@ -1,0 +1,9 @@
+AWS License Manager:
+  Oracle Database Editions:
+    - 3.0.1 - Customer managed license for Oracle Database Standard Edition
+    - 3.0.2 - Customer managed license for Oracle Database Standard Edition One
+  Oracle Database Options and Packs:
+    - 3.1.1 - Customer managed license for Oracle Database Active Data Guard
+AWS Control Tower Guardrails:
+  Disallow instances:
+    - 5.0.1 - Disallow RDS database instances that are not storage encrypted
