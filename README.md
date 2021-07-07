@@ -73,7 +73,10 @@ $ python customFramework.py --jobName Generate-YAML-Framework --existingFramewor
 1. Have an AWS account with Audit Manager enabled
 2. Confirm you have an environment to make AWS API calls with. (Cloud9 or local)
 3. Clone the provided sample code to your working environment (local computer or cloud9) (LINK)
-4. Ensure you have updated Python (Specifically version 3.5 or higher), Boto3, and Botocore installed in the environment
+4. Ensure you have updated Python (Specifically version 3.5 or higher), Boto3, pyyaml, and Botocore installed in the environment. You can also run below command to install these libraries:
+```
+pip install -r requirements.txt
+```
 
 ## Create a Custom Framework in the Audit Manager UI
 
