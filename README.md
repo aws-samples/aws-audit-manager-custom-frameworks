@@ -30,7 +30,7 @@ This job will create new custom controls and a new custom framework that consist
 
 Example Test String
 ```
-$ python customFramework.py --jobName Custom-Standard-Framework --customFrameworkName "S3 Controls Framework" --description "Automated AWS Config Controls for Amazon S3" --compliance-type "AWS Service" --template-path "frameworks/s3_config_framework.yaml" --regions "us-east-1"
+$ python3 customFramework.py --jobName Custom-Standard-Framework --customFrameworkName "S3 Controls Framework" --description "Automated AWS Config Controls for Amazon S3" --compliance-type "AWS Service" --template-path "frameworks/s3_config_framework.yaml" --regions "us-east-1"
 ```
 
 #### Automated-Custom-Framework
@@ -40,7 +40,7 @@ This job will accept Audit Manager Managed Framework names https://docs.aws.amaz
 
 Example Test String
 ```
-$ python customFramework.py --jobName Automated-Custom-Framework --regions "us-east-1" --existingFrameworkName "PCI DSS V3.2.1" --customFrameworkName "PCI DSS V3.2.1 - Automated Controls Only" 
+$ python3 customFramework.py --jobName Automated-Custom-Framework --regions "us-east-1" --existingFrameworkName "PCI DSS V3.2.1" --customFrameworkName "PCI DSS V3.2.1 - Automated Controls Only" 
 ```
 
 
@@ -52,7 +52,7 @@ This job will create a custom framework in Audit Manager by merging multiple fra
 
 Example Test String
 ```
-$ python customFramework.py --jobName Merge-Multiple-Framework --regions "us-east-1" --customFrameworkName "Custom Enterprise Controls"  --template-path "frameworks/multi_framework.yaml"
+$ python3 customFramework.py --jobName Merge-Multiple-Framework --regions "us-east-1" --customFrameworkName "Custom Enterprise Controls"  --template-path "frameworks/multi_framework.yaml"
 ```
 #### Generate-YAML-Automatic-Framework
 **Description**
@@ -61,7 +61,7 @@ This job will create a YAML file formatted for a custom framework template from 
 
 Example Test String
 ```
-$ python customFramework.py --jobName Generate-YAML-Framework --existingFrameworkName "AWS License Manager" --template-path "frameworks/license_manager_controls.yaml" --regions "us-east-1"
+$ python3 customFramework.py --jobName Generate-YAML-Framework --existingFrameworkName "AWS License Manager" --template-path "frameworks/license_manager_controls.yaml" --regions "us-east-1"
 ```
 
 
@@ -73,10 +73,8 @@ $ python customFramework.py --jobName Generate-YAML-Framework --existingFramewor
 1. Have an AWS account with Audit Manager enabled
 2. Confirm you have an environment to make AWS API calls with. (Cloud9 or local)
 3. Clone the provided sample code to your working environment (local computer or cloud9) (LINK)
-4. Ensure you have updated Python (Specifically version 3.5 or higher), Boto3, pyyaml, and Botocore installed in the environment. You can also run below command to install these libraries:
-```
-pip install -r requirements.txt
-```
+4. Ensure you have updated Python (Specifically version 3.5 or higher), Boto3, pyyaml, and Botocore installed in the environment. 
+
 
 ## Create a Custom Framework in the Audit Manager UI
 
